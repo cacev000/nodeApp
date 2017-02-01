@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 var AWS = require('aws-sdk');
 
-AWS.config.region = "us-east-1";
+AWS.config.loadFromPath('./config.json');
 
 var sns = new AWS.SNS();
 var ddb = new AWS.DynamoDB();
