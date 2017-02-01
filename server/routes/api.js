@@ -12,7 +12,13 @@ router.get('/', (req, res) => {
 
 var AWS = require('aws-sdk');
 
-AWS.config.loadFromPath('./config.json');
+
+
+if (process.env.NODE_ENV === 'prod') {
+    AWS.config.update({ region: "us-east-1" });
+} else {
+    AWS.config.loadFromPath('./config.json');
+}
 
 var sns = new AWS.SNS();
 var ddb = new AWS.DynamoDB();
@@ -41,7 +47,8 @@ router.get('/posts', (req, res) => {
         } else {
             // print all the movies
             console.log("Scan succeeded.");
-            console.log(data)
+            console.log(data);
+            res.status(200).json(data.Items);
         }
     }
 });
