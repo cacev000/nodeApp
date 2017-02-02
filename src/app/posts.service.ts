@@ -13,4 +13,11 @@ export class PostsService {
       .map(res => res.json());
   }
 
+  createPosts(createUser) {
+    let user = JSON.stringify(createUser);
+
+    return this.http.post('/api/posts/', user)
+      .map(res => res.json());
+  }
+
 }
