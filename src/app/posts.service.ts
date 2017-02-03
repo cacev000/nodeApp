@@ -13,11 +13,15 @@ export class PostsService {
       .map(res => res.json());
   }
 
+  // Create user
   createPosts(createUser) {
-    let user = JSON.stringify(createUser);
-
-    return this.http.post('/api/posts/', user)
+    return this.http.post('/api/posts', createUser)
       .map(res => res.json());
   }
 
+  // delete user
+  deletePosts(deleteUser) {
+    return this.http.delete('/api/posts', deleteUser)
+      .map(res => res.json());
+  }
 }

@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const router = express.Router();
 
 // declare axios for making http requests
@@ -46,15 +45,6 @@ var params3 = {
     }
 };
 
-var params4 = {
-    TableName: 'Client',
-    Key: {
-        email: {
-            S: "test@gmail.com"
-        },
-    }
-};
-
 // Get all posts
 router.get('/posts', (req, res) => {
 
@@ -85,34 +75,21 @@ router.get('/posts', (req, res) => {
     //     }
     // }
 
-    // // code below deletes items in table from params4
-    // ddb.deleteItem(params4, update);
-
-    // function update(err, data) {
-    //     if (err) {
-    //         console.error("Unable to delete item from table. Error JSON:", JSON.stringify(err, null, 2));
-    //     } else {
-    //         // print all the movies
-    //         console.log("Delete succeeded.");
-    //         // console.log(data);
-    //         // res.status(200).json(data.Items);
-    //     }
-    // }
 }).post('/posts', (req, res) => {
 
-    // console.log(res.body.email);
+    var params2 = {};
 
-    var params2 = {
+    params2 = {
         TableName: 'Client',
         Item: {
             email: {
-                S: res.email
+                S: req.body.email
             },
             firstName: {
-                S: res.firstName
+                S: req.body.firstName
             },
             lastName: {
-                S: res.lastName
+                S: req.body.lastName
             }
         }
     };
@@ -127,6 +104,33 @@ router.get('/posts', (req, res) => {
         } else {
             // print all the movies
             console.log("Insert succeeded.");
+            // console.log(data);
+            // res.status(200).json(data.Items);
+        }
+    }
+}).delete('/posts', (req, res) => {
+
+    var params4 = {};
+
+    params4 = {
+        TableName: 'Client',
+        Key: {
+            email: {
+                S: req.body.email
+            },
+        }
+    };
+
+
+    // code below deletes items in table from params4
+    ddb.deleteItem(params4, update);
+
+    function update(err, data) {
+        if (err) {
+            console.error("Unable to delete item from table. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            // print all the movies
+            console.log("Delete succeeded.");
             // console.log(data);
             // res.status(200).json(data.Items);
         }

@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   userCreation(email, firstName, lastName){
+
     let user = {
       email: email,
       firstName: firstName,
@@ -21,11 +22,25 @@ export class PostsComponent implements OnInit {
 
     this.postsService.createPosts(user).subscribe(
       posts => {
-        this.posts = posts;
         return true;
       },
       error => {
-        console.error("Error saving food!");
+        console.error("Error saving user!");
+      }
+    )
+  }
+  userdeletion(email){
+
+    let user = {
+      email: email,
+    };
+
+    this.postsService.deletePosts(user).subscribe(
+      posts => {
+        return true;
+      },
+      error => {
+        console.error("Error deleting user!");
       }
     )
   }
