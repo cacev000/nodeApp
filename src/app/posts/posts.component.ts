@@ -29,7 +29,7 @@ export class PostsComponent implements OnInit {
       }
     )
   }
-  userdeletion(email){
+  userDeletion(email){
 
     let user = {
       email: email,
@@ -41,6 +41,23 @@ export class PostsComponent implements OnInit {
       },
       error => {
         console.error("Error deleting user!");
+      }
+    )
+  }
+  userUpdate(email, firstName, lastName){
+
+    let user = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    };
+
+    this.postsService.updatePosts(user).subscribe(
+      posts => {
+        return true;
+      },
+      error => {
+        console.error("Error updating user!");
       }
     )
   }

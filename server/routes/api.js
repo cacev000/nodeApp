@@ -29,22 +29,6 @@ var params = {
     TableName: "Client"
 };
 
-
-var params3 = {
-    TableName: 'Client',
-    Key: {
-        email: {
-            S: "test@gmail.com"
-        },
-    },
-    UpdateExpression: "SET firstName = :fn",
-    ExpressionAttributeValues: {
-        ":fn": {
-            S: "updated fName"
-        }
-    }
-};
-
 // Get all posts
 router.get('/posts', (req, res) => {
 
@@ -60,20 +44,6 @@ router.get('/posts', (req, res) => {
             res.status(200).json(data.Items);
         }
     }
-
-    // // code below updates items in table from params3
-    // ddb.updateItem(params3, update);
-
-    // function update(err, data) {
-    //     if (err) {
-    //         console.error("Unable to update the table. Error JSON:", JSON.stringify(err, null, 2));
-    //     } else {
-    //         // print all the movies
-    //         console.log("Update succeeded.");
-    //         // console.log(data);
-    //         // res.status(200).json(data.Items);
-    //     }
-    // }
 
 }).post('/posts', (req, res) => {
 
@@ -94,7 +64,6 @@ router.get('/posts', (req, res) => {
         }
     };
 
-
     // code below inserts items in table from params2
     ddb.putItem(params2, insert);
 
@@ -108,7 +77,7 @@ router.get('/posts', (req, res) => {
             // res.status(200).json(data.Items);
         }
     }
-}).delete('/posts', (req, res) => {
+}).delete('/posts/', (req, res) => {
 
     var params4 = {};
 
@@ -121,16 +90,49 @@ router.get('/posts', (req, res) => {
         }
     };
 
-
     // code below deletes items in table from params4
-    ddb.deleteItem(params4, update);
+    ddb.deleteItem(params4, deleteUser);
 
-    function update(err, data) {
+    function deleteUser(err, data) {
         if (err) {
             console.error("Unable to delete item from table. Error JSON:", JSON.stringify(err, null, 2));
         } else {
             // print all the movies
             console.log("Delete succeeded.");
+            // console.log(data);
+            // res.status(200).json(data.Items);
+        }
+    }
+}).put('/posts/', (req, res) => {
+
+    var params3 = {};
+
+    console.log(req.body.email)
+
+    params3 = {
+        TableName: 'Client',
+        Key: {
+            email: {
+                S: req.body.email
+            },
+        },
+        UpdateExpression: "SET firstName = :fn",
+        ExpressionAttributeValues: {
+            ":fn": {
+                S: req.body.firstName
+            }
+        }
+    };
+
+    // // code below updates items in table from params3
+    ddb.updateItem(params3, update);
+
+    function update(err, data) {
+        if (err) {
+            console.error("Unable to update the table. Error JSON:", JSON.stringify(err, null, 2));
+        } else {
+            // print all the movies
+            console.log("Update succeeded.");
             // console.log(data);
             // res.status(200).json(data.Items);
         }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions  } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -19,9 +19,17 @@ export class PostsService {
       .map(res => res.json());
   }
 
-  // delete user
+  // deletes user
   deletePosts(deleteUser) {
-    return this.http.delete('/api/posts', deleteUser)
-      .map(res => res.json());
+    return this.http.delete('/api/posts/', new RequestOptions({
+         body: deleteUser
+      }))
+     .map(res => res.json());
+  }
+
+  // updates user
+  updatePosts(updateUser) {
+    return this.http.put('/api/posts/', updateUser)
+     .map(res => res.json());
   }
 }
