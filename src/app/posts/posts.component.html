@@ -1,22 +1,22 @@
 <div class="container">
     <div class="row" *ngFor="let post of user">
-        <div class="card card-block">
+        <div class="card card-block" style="background-size: cover; background-image: url('http://cidse.engineering.asu.edu/wp-content/uploads/2014/08/iStock_000027440241_Small.jpg')">
             <div class="row">
                 <div class="col-xs-4 col-sm-6 col-md-4">
                     <img class="rounded-circle img-fluid" alt="Responsive image" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png">
                 </div>
                 <div class="col-xs-8 col-sm-4 offset-sm-2 col-md-6 offset-md-2">
                     <div class="row">
-                        <h4 class="card-title responsive-text-Name">Carlos Acevedo</h4>
+                        <h4 class="card-title responsive-text-Name" style="color: white;">Carlos Acevedo</h4>
                     </div>
                     <div class="row">
-                        <h4 class="card-title responsive-text-username">{{post.userName}}</h4>
+                        <h4 class="card-title responsive-text-username" style="color: white;">{{post.userName}}</h4>
                     </div>
                     <div class="row">
-                        <p class="card-text responsive-text-email">{{post.email}}</p>
+                        <p class="card-text responsive-text-email" style="color: white;">{{post.email}}</p>
                     </div>
                     <div class="row">
-                        <p class="card-text responsive-text-title">Software Engineer</p>
+                        <p class="card-text responsive-text-title" style="color: white;">Software Engineer</p>
                     </div>
                 </div>
             </div>

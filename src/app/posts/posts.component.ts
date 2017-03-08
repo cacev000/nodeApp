@@ -21,14 +21,14 @@ export class PostsComponent implements OnInit {
       message: lastName
     };
 
-    this.postsService.createPosts(user).subscribe(
-      posts => {
-        return true;
-      },
-      error => {
-        console.error("Error saving user!");
-      }
-    )
+    // this.postsService.createPosts(user).subscribe(
+    //   posts => {
+    //     return true;
+    //   },
+    //   error => {
+    //     console.error("Error saving user!");
+    //   }
+    // )
   }
   userDeletion(email){
 
