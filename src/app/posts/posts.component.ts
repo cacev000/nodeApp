@@ -8,16 +8,17 @@ import { PostsService } from '../posts.service';
 })
 export class PostsComponent implements OnInit {
 
-  posts: any = [];
+  public userInfo:any = '';
+  public user:any = '';
 
   constructor(private postsService: PostsService) { }
 
   userCreation(email, firstName, lastName){
 
     let user = {
-      email: email,
-      firstName: firstName,
-      lastName: lastName
+      pageId: email,
+      userName: firstName,
+      message: lastName
     };
 
     this.postsService.createPosts(user).subscribe(
@@ -63,10 +64,11 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
+    let userId = '1';
         // Retrieve posts from the API
-    this.postsService.getAllPosts().subscribe(posts => {
-      // console.log(posts);
-      this.posts = posts;
+    this.postsService.getAllPosts(userId).subscribe((user:any) => {
+      console.log(user);
+      this.user = user.user;
       // console.log(posts[0].email);
     });
   }

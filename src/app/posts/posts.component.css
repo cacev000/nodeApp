@@ -1,0 +1,88 @@
+/* Large desktops and laptops */
+
+@media (min-width: 1200px) {
+    .responsive-text-Name {
+        font-size: 48px;
+    }
+    .responsive-text-username {
+        font-size: 40px;
+    }
+    .responsive-text-email {
+        font-size: 38px;
+    }
+    .responsive-text-title {
+        font-size: 36px;
+    }
+}
+
+
+/* Landscape tablets and medium desktops */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .responsive-text-Name {
+        font-size: 38px;
+    }
+    .responsive-text-username {
+        font-size: 30px;
+    }
+    .responsive-text-email {
+        font-size: 28px;
+    }
+    .responsive-text-title {
+        font-size: 26px;
+    }
+}
+
+
+/* Portrait tablets and small desktops */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .responsive-text-Name {
+        font-size: 38px;
+    }
+    .responsive-text-username {
+        font-size: 30px;
+    }
+    .responsive-text-email {
+        font-size: 28px;
+    }
+    .responsive-text-title {
+        font-size: 26px;
+    }
+}
+
+
+/* Landscape phones and portrait tablets */
+
+@media (max-width: 767px) {
+    .responsive-text-Name {
+        font-size: 28px;
+    }
+    .responsive-text-username {
+        font-size: 20px;
+    }
+    .responsive-text-email {
+        font-size: 18px;
+    }
+    .responsive-text-title {
+        font-size: 16px;
+    }
+}
+
+
+/* Portrait phones and smaller */
+
+@media (max-width: 480px) {
+    .responsive-text-Name {
+        font-size: 28px;
+    }
+    .responsive-text-username {
+        font-size: 20px;
+    }
+    .responsive-text-email {
+        font-size: 18px;
+    }
+    .responsive-text-title {
+        font-size: 16px;
+    }
+}

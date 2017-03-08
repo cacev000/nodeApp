@@ -22,11 +22,11 @@ if (process.env.NODE_ENV === 'prod') {
     AWS.config.loadFromPath('./config.json');
 }
 
-var sns = new AWS.SNS();
-var ddb = new AWS.DynamoDB();
+// var sns = new AWS.SNS();
+// var ddb = new AWS.DynamoDB();
 
 var params = {
-    TableName: "Client"
+    TableName: "user"
 };
 
 // Get all posts
@@ -50,7 +50,7 @@ router.get('/posts', (req, res) => {
     var params2 = {};
 
     params2 = {
-        TableName: 'Client',
+        TableName: 'user',
         Item: {
             email: {
                 S: req.body.email
@@ -82,9 +82,9 @@ router.get('/posts', (req, res) => {
     var params4 = {};
 
     params4 = {
-        TableName: 'Client',
+        TableName: 'user',
         Key: {
-            email: {
+            userName: {
                 S: req.body.email
             },
         }
@@ -110,7 +110,7 @@ router.get('/posts', (req, res) => {
     console.log(req.body.email)
 
     params3 = {
-        TableName: 'Client',
+        TableName: 'user',
         Key: {
             email: {
                 S: req.body.email
