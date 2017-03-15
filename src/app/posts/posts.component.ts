@@ -13,27 +13,29 @@ export class PostsComponent implements OnInit {
 
   constructor(private postsService: PostsService) { }
 
-  userCreation(email, firstName, lastName){
+  userCreation(email, password, userName){
+    let id = '2';
 
     let user = {
-      pageId: email,
-      userName: firstName,
-      message: lastName
+      userId: id,
+      email: email,
+      password: password,
+      userName: userName
     };
 
-    // this.postsService.createPosts(user).subscribe(
-    //   posts => {
-    //     return true;
-    //   },
-    //   error => {
-    //     console.error("Error saving user!");
-    //   }
-    // )
+    this.postsService.createPosts(user).subscribe(
+      posts => {
+        return true;
+      },
+      error => {
+        console.error("Error saving user!");
+      }
+    )
   }
-  userDeletion(email){
+  userDeletion(id){
 
     let user = {
-      email: email,
+      userId: id,
     };
 
     this.postsService.deletePosts(user).subscribe(
@@ -45,12 +47,14 @@ export class PostsComponent implements OnInit {
       }
     )
   }
-  userUpdate(email, firstName, lastName){
-
+  userUpdate(email, password, userName){
+    let id = '1';
+    
     let user = {
+      userId: id,
       email: email,
-      firstName: firstName,
-      lastName: lastName
+      password: password,
+      userName: userName
     };
 
     this.postsService.updatePosts(user).subscribe(
@@ -68,7 +72,7 @@ export class PostsComponent implements OnInit {
         // Retrieve posts from the API
     this.postsService.getAllPosts(userId).subscribe((user:any) => {
       console.log(user);
-      this.user = user.user;
+      this.user = user;
       // console.log(posts[0].email);
     });
   }
